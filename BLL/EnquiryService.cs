@@ -15,7 +15,6 @@ namespace BLL
         {
             List<Enquiry> getallEnquiries = eda.GetAll();
             List<EnquiryBO> getallEnqBOList = new List<EnquiryBO>();
-
             foreach (Enquiry enquiry in getallEnquiries)
             {
                 EnquiryBO enquiryBO = new EnquiryBO();
@@ -32,17 +31,14 @@ namespace BLL
         {
             Enquiry enquiry = new Enquiry();
             enquiry = eda.GetById(id);
-
             EnquiryBO enquiryBO = new EnquiryBO();
             enquiryBO.Address = enquiry.Address;
             enquiryBO.Age = enquiry.Age;
             enquiryBO.FristName = enquiry.FristName;
             enquiryBO.Id = enquiry.Id;
             enquiryBO.LastName = enquiry.LastName;
-
             return enquiryBO;
         }
-
         public void Add(EnquiryBO enquiryBO)
         {
             Enquiry enquiry = new Enquiry();
@@ -53,23 +49,18 @@ namespace BLL
             enquiry.Id = enquiryBO.Id;
             eda.Add(enquiry);
         }
-
         public void Edit(EnquiryBO enquireyBO)
         {
             Enquiry enquiry = new Enquiry();
             enquiry = eda.GetById(enquireyBO.Id);
-
             enquiry.Address = enquireyBO.Address;
             enquiry.Age = enquireyBO.Age;
             enquiry.FristName = enquireyBO.FristName;
             enquiry.LastName = enquireyBO.LastName;
-
              eda.Update(enquiry);
         }
-
         public void Delete(int id)
         {
-
             eda.Delete(id);
         }
     }

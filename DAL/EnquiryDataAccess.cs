@@ -19,28 +19,20 @@ namespace DAL
         public Enquiry GetById(int id)
         {
             return db.Enquiries.Find(id);
-        }
-        
+        }    
         public void Add(Enquiry enquiry)
-        {
-  
+        { 
                 db.Enquiries.Add(enquiry);
                 db.SaveChanges();
-        }
-        
+        }        
         public HttpResponseMessage Update(Enquiry enquiry)
         {
             try
-            {
-               
+            {              
                     db.Entry(enquiry).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                     HttpResponseMessage response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
-                    return response;
-               
-                    //HttpResponseMessage response = new HttpResponseMessage(System.Net.HttpStatusCode.NotFound);
-                    //return response;
-                
+                    return response;               
             }
             catch(Exception ex)
             {
@@ -48,7 +40,6 @@ namespace DAL
                 return responseMessage;
             }
         }
-
         public HttpResponseMessage Delete(int id)
         {
             Enquiry enquiry = db.Enquiries.Find(id);
@@ -65,42 +56,5 @@ namespace DAL
                 return response;
             }
         }
-
-        //public HttpResponseMessage Add(Enquiry enquiry)
-        //{
-        //    try
-        //    {
-        //        db.Enquiries.Add(enquiry);
-        //        db.SaveChanges();
-        //        HttpResponseMessage response = new HttpResponseMessage(System.Net.HttpStatusCode.Created);
-        //        return response;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        HttpResponseMessage responseMessage = new HttpResponseMessage(System.Net.HttpStatusCode.InternalServerError);
-        //        return responseMessage;
-        //    }
-        //}
-
-        //public HttpResponseMessage Update(Enquiry enquiry)
-        //{
-        //    try
-        //    {
-
-        //        db.Entry(enquiry).State = System.Data.Entity.EntityState.Modified;
-        //        db.SaveChanges();
-        //        HttpResponseMessage response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
-        //        return response;
-
-        //        //HttpResponseMessage response = new HttpResponseMessage(System.Net.HttpStatusCode.NotFound);
-        //        //return response;
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        HttpResponseMessage responseMessage = new HttpResponseMessage(System.Net.HttpStatusCode.InternalServerError);
-        //        return responseMessage;
-        //    }
-        //}
     }
 }
